@@ -43,11 +43,6 @@ if (start === true) {
         document.getElementById("winCount").innerHTML = winCount; 
         document.getElementById("lossCount").innerHTML = lossCount; 
 
-
-
-
-
-
         // Testing
         console.log(currentWord);
         console.log(numLettersInWord); 
@@ -60,9 +55,16 @@ if (start === true) {
             currentGuess = event.key.toLowerCase();
             for (i = 0; i < currentWord.length; i++) {
                 if (currentGuess === currentWord[i]) {
-                lettersCorrect[i] = currentGuess;
-                document.getElementById("currentWord").innerHTML = lettersCorrect.join(" ");
+                    lettersCorrect[i] = currentGuess;
+                    document.getElementById("currentWord").innerHTML = lettersCorrect.join(" ");
                 }
+
+                else if (currentGuess !== currentWord[i]) { 
+                    letterGuessed[i] = currentGuess
+                    document.getElementById("letterGuessed").innerHTML = letterGuessed[i];
+
+                    
+                }  
             }
         }
     }
