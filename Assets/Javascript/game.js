@@ -23,9 +23,21 @@ var start = confirm("Would you like to play Animal Hangman?"); // Asks the user 
 if (start === true) {
 
     function beginGame () { 
+        // Getting the currentWord randomly and them splitting it up into dashes
         currentWord = answers[Math.floor(Math.random() * answers.length)];
         numLettersInWord = currentWord.split(""); 
         dashNumber = numLettersInWord.length;
+        
+        guessesLeft = 10; 
+        lettersCorrect = []; 
+        lettersGuessed = [];
+
+        for (i = 0; i < dashNumber; i++) { 
+            lettersCorrect.push("_")
+        }
+        
+
+
 
 
         // Testing
