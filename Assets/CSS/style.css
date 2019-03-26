@@ -5,7 +5,7 @@ body {
 
 h1 { 
     font-size: 50px;
-    padding-bottom: 20px;
+    padding-bottom: 15px;
 }
 
 h2 { 
@@ -27,6 +27,11 @@ h2 {
     padding-bottom: 20px;
     background-color: #e8ecef;
 }
+
+.border-dark { 
+    border-bottom: 2px solid  #34354a !important;
+}
+
 
 
 

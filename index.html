@@ -18,10 +18,10 @@
     <div class="container"> 
         <div class="jumbotron"> 
             <header class="text-center"> 
-                <h1>Hangman Game</h1>
+                <h1 class="border-bottom border-dark">Animal Word Game</h1>
             
-                <p>Instructions: Guess the mystery word letter by letter. 
-                            Once you have the answer, you get to see a surprise!
+                <p>Instructions: Guess the mystery animal letter by letter. 
+                            Once you have the answer, the word full word will appear and you will see a surprise!
                 </p>
 
                 <h2> _ _ _ _ _ _ _ _ _</h2> 
@@ -32,13 +32,33 @@
         <section>
 
             <div class="row guesses border rounded"> 
-                <div class="col-12 text-left border-bottom border-dark">
+                <div class="col-12 text-left">
                     <h4>Guesses: </h4>
                 </div>
             </div>
 
+            <div class="row guesses border rounded"> 
+                    <div class="col-12 text-left">
+                        <h4>Guesses Left: </h4>
+                    </div>
+                </div>
+
+                <div class="row guesses border rounded"> 
+                        <div class="col-12 text-left">
+                            <h4>Win Count: </h4>
+                        </div>
+                    </div>
+
+                    <div class="row guesses border rounded"> 
+                            <div class="col-12 text-left">
+                                <h4>Loss Count: </h4>
+                            </div>
+                        </div>
+
         </section> 
     </div>
 </body>
+
+
 
 </html>
