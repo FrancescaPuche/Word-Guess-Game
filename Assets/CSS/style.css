@@ -3,6 +3,12 @@ body {
     color: #34354a;
 }
 
+header { 
+    padding-left: 40px; 
+    padding-right: 40px; 
+
+}
+
 h1 { 
     font-size: 50px;
     padding-bottom: 15px;
@@ -22,7 +28,7 @@ h2 {
     margin: 20px;
 }
 
-.guesses { 
+.game-content { 
     padding-top: 20px;
     padding-bottom: 20px;
     background-color: #e8ecef;

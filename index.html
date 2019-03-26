@@ -11,52 +11,54 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="Assets/CSS/style.css">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
-    <script src="Assets/Javascript/game.js"></script>
+    
 </head>
 
 <body>
     <div class="container"> 
-        <div class="jumbotron"> 
-            <header class="text-center"> 
+
+        <div class="row"> 
+            <header class="col-12 game-content border rounded text-center"> 
                 <h1 class="border-bottom border-dark">Animal Word Game</h1>
             
                 <p>Instructions: Guess the mystery animal letter by letter. 
-                            Once you have the answer, the word full word will appear and you will see a surprise!
+                    Once you have the answer, the full word will appear and you will see a surprise!
                 </p>
 
-                <h2> _ _ _ _ _ _ _ _ _</h2> 
+                <h2 id="answerWord"> </h2> 
             </header>
         </div>
-        
 
-        <section>
-
-            <div class="row guesses border rounded"> 
+        <div>
+            <div class="row game-content border rounded"> 
                 <div class="col-12 text-left">
-                    <h4>Guesses: </h4>
+                    <h3>Guesses: <span id="letterGuesses"></span> </h3> 
                 </div>
             </div>
 
-            <div class="row guesses border rounded"> 
-                    <div class="col-12 text-left">
-                        <h4>Guesses Left: </h4>
-                    </div>
+            <div class="row game-content border rounded"> 
+                <div class="col-12 text-left">
+                    <h3> Guesses Left: <span id="guessesLeft"></span> </h3> 
                 </div>
+            </div>
 
-                <div class="row guesses border rounded"> 
-                        <div class="col-12 text-left">
-                            <h4>Win Count: </h4>
-                        </div>
-                    </div>
+            <div class="row game-content border rounded"> 
+                <div class="col-12 text-left">
+                     <h3>Win Count: <span id="wins"></span> </h3>
+                </div>
+            </div>
 
-                    <div class="row guesses border rounded"> 
-                            <div class="col-12 text-left">
-                                <h4>Loss Count: </h4>
-                            </div>
-                        </div>
+            <div class="row game-content border rounded"> 
+                <div class="col-12 text-left">
+                    <h3>Loss Count: <span id="losses"></span> </h3>
+                </div>
+            </div>
+        </div> 
 
-        </section> 
     </div>
+
+    <script src="Assets/Javascript/game.js"></script>
+
 </body>
 
 
