@@ -7,6 +7,7 @@ var currentWord =""; // Current word to guess
 var numLettersInWord = []; // An array to hold the letters of the current word
 var dashNumber = 0; // How many dashed lines the current word needs
 var lettersCorrect = []; // The correct letters in the current word
+var currentGuess; // Current letter the user has guessed
 var lettersGuessed = []; // The incorrect letters in the current word
 var winCount = 0; // How many times the player has won
 var guessesLeft = 10; // How many guesses the player has left for the current word
@@ -33,9 +34,16 @@ if (start === true) {
         lettersGuessed = [];
 
         for (i = 0; i < dashNumber; i++) { 
-            lettersCorrect.push("_")
+            lettersCorrect.push("_");
         }
         
+        //Placing info in the HTML 
+        document.getElementById("currentWord").innerHTML = lettersCorrect.join(" "); 
+        document.getElementById("guessesLeft").innerHTML = guessesLeft; 
+        document.getElementById("winCount").innerHTML = winCount; 
+        document.getElementById("lossCount").innerHTML = lossCount; 
+
+
 
 
 
@@ -44,7 +52,21 @@ if (start === true) {
         console.log(currentWord);
         console.log(numLettersInWord); 
         console.log(dashNumber);
+        console.log(lettersCorrect); 
+    }
+    //Function for when letters are pressed to check to see if they are in the current Word
+    function lettersPressed() {
+        document.onkeyup = function(event) {
+            currentGuess = event.key.toLowerCase();
+            for (i = 0; i < currentWord.length; i++) {
+                if (currentGuess === currentWord[i]) {
+                lettersCorrect[i] = currentGuess;
+                document.getElementById("currentWord").innerHTML = lettersCorrect.join(" ");
+                }
+            }
+        }
     }
 }
 
-beginGame(); 
+beginGame();
+lettersPressed(); 
