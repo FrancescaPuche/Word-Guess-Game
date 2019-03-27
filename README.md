@@ -1,94 +1,88 @@
-# Word-Guess-Game
-Musical hangman-styled game 
+Pseudocode For Word Guessing Game: 
+--------------------------------------------------------
+- Variables / Arrays
+    • answers = []; //array of answers that will be randomly selected
+    currentWord =""; // Current word to guess
 
-if(start === true) { 
-    function animalGame () { 
-        currentWord = answers[Math.floor(Math.random() * answers.length)]; 
-        charInWord = currentWord.split(""); 
-        dashNumber = charInWord.length; 
-    
-        remainingGuesses = 10; 
-        wrongLetters = []; 
-        lettersCorrect = [];
-    
-        for (i = 0; i < dashNumber; i++) {
-            lettersCorrect.push("_"); 
-        }
-    
-        document.getElementById("answerWord").innerHTML = lettersCorrect.join(" ");
-        document.getElementById("guessesLeft").innerHTML = remainingGuesses; 
-        document.getElementById("wins").innerHTML = winCount;
-        document.getElementById("losses").innerHTML = lossCount; 
-    
-    // Testing in console
-        console.log(currentWord);
-        console.log(charInWord);
-        console.log(dashNumber); 
-        console.log(lettersCorrect); 
-    }
-}
+    • numLettersInWord = []; // An array to hold the letters of the current word
 
-else { 
-    
-}
+    • dashNumber = 0; // How many dashed lines the current word needs
 
+    • lettersCorrect = []; // The correct letters in the current word
 
-function lettersPressed(alphabet) { 
-    var isLetterInWord = false; 
+    • currentGuess; // Current letter the user has guessed
 
-    for (i=0; i < dashNumber; i++) { 
-        if(currentWord[i] == alphabet) { 
-            isLetterInWorld = true; 
-        }
-    }
-    
-    if (isLetterInWord) { 
-        for (i=0; i < dashNumber; i++) { 
-            if(currentWord[i] == alphabet) { 
-                lettersCorrect[i] = alphabet; 
-            }
-        }
-    }
-    
-    else { 
-        wrongLetters.push(alphabet); 
-        remainingGuesses--
-    }
-}
+    • lettersGuessed = []; // The incorrect letters in the current word
 
-function endingGame() { 
-    console.log("Win Count: " + winCount + " Loss Count: " + lossCount + "Guesses Left: " + remainingGuesses);
+    • winCount = 0; // How many times the player has won
 
-    document.getElementById("guessesLeft").innerHTML = remainingGuesses; 
-    document.getElementById("answerWord").innerHTML = dashNumber.join(" "); 
-    document.getElementById("letterGuesses").innerHTML = wrongLetters.join(" "); 
+    • guessesLeft = 10; // How many guesses the player has left for the current word
 
-    if (charInWord.toString() == dashNumber.toString()) { 
-        winCount++; 
-        alert("You Win!!"); 
+    • lossCount = 0; // How many time the player has lost
+---------------------------------------------------------
+- Starting the Game
+    • start = Boolean declaring a confirm alert to asking the user to start the game 
 
-        document.getElementById("wins").innerHTML = winCount; 
+    • If statement - if start === true
 
-        animalGame(); 
-     }
+        - In the Begin Game function: 
+            • currentWord  = random number generator to choose word from the answers array 
+            • numLetterInWord = set to the currentWord variable with a split separator 
+            • dashNumber = numLetterInWord array length 
 
-    else { 
-        lossCount++; 
-        alert("Sorry, you lost."); 
+            • guessesLeft = 10 chances that the user has to figure out the word
+            • lettersCorrect = an empty array 
+                - will be filled with dashes and then replaced by the correct letters chosen
+            • lettersGuessed = an empty array 
+                - will be filled with the incorrect letters chosen by the user 
 
-        document.getElementById("losses").innerHTML = lossCount;
+            • For loop that will take lettersCorrect and adda a dash for ever letter in the current word in play 
+                - i starts at 0 
+                - i is less than dasNumber 
+                - i++ 
 
-        animalGame(); 
-    }
-}
+            • Will be using document.getElementById and .innerHTML to edit the html file using the id's assigned for those elements
+                - Will use this for: 
+                    • lettersCorrect 
+                    • guessesLeft
+                    • winCount
+                    • lossCount 
+---------------------------------------------------------------- 
+- In the Letters Pressed function: 
+        • document.onkeyup function(event) - get which key the user used
+        • currentGuess is set to event.key and changes it to lowercase
+
+        • For Loop - this loop starts at 0, goes for the length of currentWord, and the counter adds 1 after each round
+            
+            - inside the for loop is a variable isLetterInWord that is set to false
+            
+            - If Statement - if the currentGuess is a letter in currentWord the isLetterInWord is true 
+                • use the document.getElementById and .innerHTML to swap the dash(es) with the correct letter
+
+            - If Statement - if lettersGuessed use indexOf to return the index of the last occurrence of currentGuess in the lettersGuessed array 
+
+            - if isLetterinWord is false then used document.getElementBy and .innerHTML to add letter incorrectly choosen to Guesses row in html and subtract 1 from guessesLeft 
+-----------------------------------------------------------------
+• Once for loop is complete for the current word:
+
+        • If Statement - if the word has been correctly guessed then a confirm alert saying "You Win! Would you like to play again will appear.
+
+            - winCount++
+
+            -If statement - if playAgain === true the run the startGame and LettersPressed funtions
+
+            Else - Alert saying "Thank you for playing! Goodbye!" 
+
+        • If Statement - guessesLeft === 0 
+
+            - LossCount++ 
+
+            - Confirm alert saying "You Lost. Would you like to play again? 
+                • If statement - if playAgain === true the run the startGame and LettersPressed funtions
+
+                Else - Alert saying "Thank you for playing! Goodbye!"  
 
 
-// running functions
-animalGame();
 
-document.onkeyup = function(event) { 
-    var letter = String.fromCharCode(event.keyCode).toLowerCase();
 
-    lettersPressed(letter);
-    endingGame(); 
-}
+

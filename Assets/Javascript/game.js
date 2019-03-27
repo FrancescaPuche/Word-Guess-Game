@@ -11,7 +11,7 @@ var currentGuess; // Current letter the user has guessed
 var lettersGuessed = []; // The incorrect letters in the current word
 var winCount = 0; // How many times the player has won
 var guessesLeft = 10; // How many guesses the player has left for the current word
-var lossCount = 0; // How many time sthe player has lost
+var lossCount = 0; // How many time the player has lost
 //-------------------------------------------------------
 
 
@@ -43,28 +43,34 @@ if (start === true) {
         document.getElementById("winCount").innerHTML = winCount; 
         document.getElementById("lossCount").innerHTML = lossCount; 
 
-        // Testing
-        console.log(currentWord);
-        console.log(numLettersInWord); 
-        console.log(dashNumber);
-        console.log(lettersCorrect); 
     }
     //Function for when letters are pressed to check to see if they are in the current Word
     function lettersPressed() {
         document.onkeyup = function(event) {
-            currentGuess = event.key.toLowerCase();
+        currentGuess = event.key.toLowerCase();
+
             for (i = 0; i < currentWord.length; i++) {
+                var isLetterInWord = false;
+
                 if (currentGuess === currentWord[i]) {
                     lettersCorrect[i] = currentGuess;
                     document.getElementById("currentWord").innerHTML = lettersCorrect.join(" ");
+                    isLetterInWord = true; 
                 }
 
-                else if (currentGuess !== currentWord[i]) { 
-                    letterGuessed[i] = currentGuess
-                    document.getElementById("letterGuessed").innerHTML = letterGuessed[i];
+                if (lettersGuessed.indexOf(currentGuess) < 0) { 
+                    lettersGuessed.push(currentGuess); 
+                    document.getElementById("letterGuessed").innerHTML = lettersGuessed.join(" ");
+                }
 
-                    
-                }  
+                if (isLetterInWord == false) { 
+                    document.getElementById("guessesLeft").innerHTML = guessesLeft--;   
+                }
+
+                else { 
+                    document.getElementById("guessesLeft").innerHTML = guessesLeft; 
+                }
+                
             }
         }
     }
